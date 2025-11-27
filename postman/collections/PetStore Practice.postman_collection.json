@@ -1,0 +1,302 @@
+{
+  "info": {
+    "_postman_id": "a970e453-5e53-4c8a-9262-3447dece593d",
+    "name": "PetStore Practice",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "2245662"
+  },
+  "item": [
+    {
+      "name": "NewPet",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "9044bb75-68c2-4d5d-9d0b-285a2d8d6382",
+            "exec": [
+              "// Check if response is successful",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Handle both JSON and XML responses",
+              "pm.test(\"Response format validation\", function () {",
+              "    const contentType = pm.response.headers.get(\"Content-Type\");",
+              "    ",
+              "    if (pm.response.code === 200) {",
+              "        // For successful responses, expect JSON",
+              "        pm.expect(contentType).to.include(\"application/json\");",
+              "        ",
+              "        const jsonData = pm.response.json();",
+              "        ",
+              "        pm.test(\"Check pet id\", function () {",
+              "            pm.expect(jsonData.id).to.equal(124);",
+              "        });",
+              "        ",
+              "        pm.test(\"Check pet name\", function () {",
+              "            pm.expect(jsonData.name).to.eql('Benji');",
+              "        });",
+              "        ",
+              "        pm.test(\"Check pet category\", function () {",
+              "            pm.expect(jsonData.category).to.be.an('object');",
+              "            pm.expect(jsonData.category.name).to.equal('Dog');",
+              "        });",
+              "    } else {",
+              "        // For error responses, handle XML or JSON",
+              "        if (contentType && contentType.includes(\"xml\")) {",
+              "            const responseText = pm.response.text();",
+              "            pm.test(\"XML error response received\", function () {",
+              "                pm.expect(responseText).to.include(\"apiResponse\");",
+              "            });",
+              "            ",
+              "            // Parse and log the error message",
+              "            const jsonObject = xml2Json(responseText);",
+              "            if (jsonObject.apiResponse && jsonObject.apiResponse.message) {",
+              "                console.log(\"API Error Message:\", jsonObject.apiResponse.message);",
+              "            }",
+              "        } else {",
+              "            // Handle JSON error responses",
+              "            try {",
+              "                const errorData = pm.response.json();",
+              "                console.log(\"API Error:\", errorData);",
+              "            } catch (e) {",
+              "                console.log(\"Unable to parse error response\");",
+              "            }",
+              "        }",
+              "    }",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "2b39e914-e47d-434a-8e2f-2efdddf7f598",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 124,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"Dog\"\r\n  },\r\n  \"name\": \"Benji\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASEURL}}/pet",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "pet"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "id": "a8ec5116-56df-41a6-b9fd-4120836a564d",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "{{BASEURL}}/pet/124",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "pet",
+            "124"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Order For pets",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "28cfdcc3-5958-4028-969e-b5a29fbe2dc0",
+            "exec": [
+              "pm.test(\"Verify Response is not empty and contains expected data\", function () {\r",
+              "\r",
+              "    \r",
+              "    var jsonData = pm.response.json();\r",
+              "    if(jsonData!=undefined){\r",
+              "        console.log('Order Created with ID: ' + jsonData.id);\r",
+              "        pm.expect(jsonData.id).to.eql(1);\r",
+              "        pm.expect(jsonData.petId).to.eql(124);\r",
+              "        pm.expect(jsonData.quantity).to.eql(10);\r",
+              "    }\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "0a1a6b0d-429a-4c45-a689-b0b4a58b4819",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 1,\r\n  \"petId\": 124,\r\n  \"quantity\": 10,\r\n  \"shipDate\": \"2025-11-26T23:44:30.235Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASEURL}}/store/order",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "store",
+            "order"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "cda1886b-203c-4deb-86ef-46f8b90d44e7",
+            "exec": [
+              "pm.test(\"Status code is 200 and Message is OK\", function () {",
+              "    pm.collectionVariables.set(\"userId\", JSON.parse(pm.request.body.raw)[0].id);",
+              "    pm.collectionVariables.set(\"userName\", JSON.parse(pm.request.body.raw)[0].username);",
+              "    pm.response.to.have.status(200);",
+              "    var data = pm.response.json();",
+              "    pm.expect(data.message).to.eql(\"ok\");",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "c019883f-9d03-4c32-b196-e6d799643eb7",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "\t\r\n[\r\n  {\r\n    \"id\": 1,\r\n    \"username\": \"JBarajas\",\r\n    \"firstName\": \"Jesus\",\r\n    \"lastName\": \"Barajas\",\r\n    \"email\": \"jb@test.com\",\r\n    \"password\": \"Benji123\",\r\n    \"phone\": \"123123123\",\r\n    \"userStatus\": 0\r\n  }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASEURL}}/user/createWithList",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "user",
+            "createWithList"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4e196160-0f54-41e5-954f-75adfedd7a68",
+            "exec": [
+              "pm.test(\"Status code is 200 and Usernae is correct\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "    var responseJson = pm.response.json();\r",
+              "    pm.expect(responseJson.message).to.eql(\"JBarajas\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "213338c1-f75c-4e61-bd5c-fa1aa7bf58bc",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{BASEURL}}/user/{{userName}}",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "user",
+            "{{userName}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "041a8911-262a-4fc7-a8a9-e52f14745887",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "0fdb1630-0f0b-4768-9f18-9056a4c2fd73",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "d92bcc7f-738f-48aa-a5bc-abb0700bf07f",
+      "key": "userName",
+      "value": ""
+    },
+    {
+      "id": "19cf0bbf-4fdf-4fb2-9239-91e58172ef94",
+      "key": "userId",
+      "value": ""
+    }
+  ]
+}

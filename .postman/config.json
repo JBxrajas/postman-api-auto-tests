@@ -1,0 +1,18 @@
+{
+  "workspace": {
+    "id": "76193443-bc51-4412-87c2-ba6c52f2b497"
+  },
+  "entities": {
+    "collections": [
+      "..\\postman\\collections\\PetStore Practice.postman_collection.json"
+    ],
+    "environments": [
+      "..\\postman\\environments\\PetStorePROD.postman_environment.json"
+    ],
+    "specs": [
+      "..\\postman\\specs\\Activation Service APIs.json"
+    ],
+    "flows": [],
+    "globals": []
+  }
+}

@@ -1,0 +1,5720 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Activation Service APIs",
+    "description": "This page lists all the rest apis for Activation Service.",
+    "version": "unknown"
+  },
+  "servers": [{
+    "url": "//localhost:8080/"
+  }],
+  "tags": [{
+    "name": "activation-controller",
+    "description": "Activation Controller"
+  },
+    {
+      "name": "operation-handler",
+      "description": "Operation Handler"
+    }
+  ],
+  "paths": {
+    "/activation/accountactivation": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns the Activation result",
+        "operationId": "activateAccountUsingPOST",
+        "parameters": [{
+          "name": "X-B3-ParentSpanId",
+          "in": "header",
+          "description": "X-B3-ParentSpanId",
+          "required": false,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+          {
+            "name": "X-B3-SpanId",
+            "in": "header",
+            "description": "X-B3-SpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-TraceId",
+            "in": "header",
+            "description": "X-B3-TraceId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Forwarded-For",
+            "in": "header",
+            "description": "X-Forwarded-For",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "activationRequest",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebActivationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the Activation result",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebActivationResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "requestParameters": {
+            "integration.request.header.X-B3-ParentSpanId": "method.request.header.X-B3-ParentSpanId",
+            "integration.request.header.X-B3-SpanId": "method.request.header.X-B3-SpanId",
+            "integration.request.header.X-B3-TraceId": "method.request.header.X-B3-TraceId",
+            "integration.request.header.X-Correlation-Id": "method.request.header.X-Correlation-Id",
+            "integration.request.header.X-Forwarded-For": "method.request.header.X-Forwarded-For",
+            "integration.request.header.token": "method.request.header.token"
+          },
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/accountactivation",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/authloanactivation/{encryptedValue}": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns the ala or questions",
+        "operationId": "authLoanRequestActionUsingPOST",
+        "parameters": [{
+          "name": "X-B3-ParentSpanId",
+          "in": "header",
+          "description": "X-B3-ParentSpanId",
+          "required": false,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+          {
+            "name": "X-B3-SpanId",
+            "in": "header",
+            "description": "X-B3-SpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-TraceId",
+            "in": "header",
+            "description": "X-B3-TraceId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Forwarded-For",
+            "in": "header",
+            "description": "X-Forwarded-For",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "encryptedValue",
+            "in": "path",
+            "description": "encryptedValue",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns ala page or questions page",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthLoanAmtActionResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "requestParameters": {
+            "integration.request.header.X-B3-ParentSpanId": "method.request.header.X-B3-ParentSpanId",
+            "integration.request.header.X-B3-SpanId": "method.request.header.X-B3-SpanId",
+            "integration.request.header.X-B3-TraceId": "method.request.header.X-B3-TraceId",
+            "integration.request.header.X-Correlation-Id": "method.request.header.X-Correlation-Id",
+            "integration.request.header.X-Forwarded-For": "method.request.header.X-Forwarded-For",
+            "integration.request.path.encryptedValue": "method.request.path.encryptedValue"
+          },
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/authloanactivation/{encryptedValue}",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/pla/status/{applicationId}": {
+      "get": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns PLA status",
+        "operationId": "getPLAStatus",
+        "parameters": [
+          {
+            "name": "X-B3-ParentSpanId",
+            "in": "header",
+            "description": "X-B3-ParentSpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-SpanId",
+            "in": "header",
+            "description": "X-B3-SpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-TraceId",
+            "in": "header",
+            "description": "X-B3-TraceId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Forwarded-For",
+            "in": "header",
+            "description": "X-Forwarded-For",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "applicationId",
+            "in": "path",
+            "description": "applicationId",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns PLA status",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlaStatusResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "requestParameters": {
+            "integration.request.header.X-B3-ParentSpanId": "method.request.header.X-B3-ParentSpanId",
+            "integration.request.header.X-B3-SpanId": "method.request.header.X-B3-SpanId",
+            "integration.request.header.X-B3-TraceId": "method.request.header.X-B3-TraceId",
+            "integration.request.header.X-Correlation-Id": "method.request.header.X-Correlation-Id",
+            "integration.request.header.X-Forwarded-For": "method.request.header.X-Forwarded-For",
+            "integration.request.path.applicationId": "method.request.path.applicationId",
+            "integration.request.header.token": "method.request.header.token"
+          },
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/pla/status/{applicationId}",
+          "httpMethod": "GET"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/capture/decline-reasons": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns Thank you page",
+        "operationId": "CaptureDeclineReasonsUsingPOST",
+        "requestBody": {
+          "description": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaptureDeclineReasonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns Thank you page",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptureDeclineReasonsResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/capture/decline-reasons",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/authloansubmit": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns the ala submit response",
+        "operationId": "authLoanSubmitActionUsingPOST",
+        "parameters": [{
+          "name": "X-B3-ParentSpanId",
+          "in": "header",
+          "description": "X-B3-ParentSpanId",
+          "required": false,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+          {
+            "name": "X-B3-SpanId",
+            "in": "header",
+            "description": "X-B3-SpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-TraceId",
+            "in": "header",
+            "description": "X-B3-TraceId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Forwarded-For",
+            "in": "header",
+            "description": "X-Forwarded-For",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthLoanSubmitRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns ala submit response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthLoanSubmitResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "requestParameters": {
+            "integration.request.header.X-B3-ParentSpanId": "method.request.header.X-B3-ParentSpanId",
+            "integration.request.header.X-B3-SpanId": "method.request.header.X-B3-SpanId",
+            "integration.request.header.X-B3-TraceId": "method.request.header.X-B3-TraceId",
+            "integration.request.header.X-Correlation-Id": "method.request.header.X-Correlation-Id",
+            "integration.request.header.X-Forwarded-For": "method.request.header.X-Forwarded-For"
+          },
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/authloansubmit",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/create": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns the Created Account Response",
+        "operationId": "createAccountUsingPOST",
+        "parameters": [{
+          "name": "X-B3-ParentSpanId",
+          "in": "header",
+          "description": "X-B3-ParentSpanId",
+          "required": false,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+          {
+            "name": "X-B3-SpanId",
+            "in": "header",
+            "description": "X-B3-SpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-TraceId",
+            "in": "header",
+            "description": "X-B3-TraceId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Forwarded-For",
+            "in": "header",
+            "description": "X-Forwarded-For",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the Created Account Response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAccountResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "requestParameters": {
+            "integration.request.header.X-B3-ParentSpanId": "method.request.header.X-B3-ParentSpanId",
+            "integration.request.header.X-B3-SpanId": "method.request.header.X-B3-SpanId",
+            "integration.request.header.X-B3-TraceId": "method.request.header.X-B3-TraceId",
+            "integration.request.header.X-Correlation-Id": "method.request.header.X-Correlation-Id",
+            "integration.request.header.X-Forwarded-For": "method.request.header.X-Forwarded-For",
+            "integration.request.header.token": "method.request.header.token"
+          },
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/create",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/ctarequired": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns the cta required response",
+        "operationId": "ctaRequiredUsingPOST",
+        "parameters": [{
+          "name": "X-B3-ParentSpanId",
+          "in": "header",
+          "description": "X-B3-ParentSpanId",
+          "required": false,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+          {
+            "name": "X-B3-SpanId",
+            "in": "header",
+            "description": "X-B3-SpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-TraceId",
+            "in": "header",
+            "description": "X-B3-TraceId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Forwarded-For",
+            "in": "header",
+            "description": "X-Forwarded-For",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CtaRequiredRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the cta required response for that application",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CtaRequiredResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "requestParameters": {
+            "integration.request.header.X-B3-ParentSpanId": "method.request.header.X-B3-ParentSpanId",
+            "integration.request.header.X-B3-SpanId": "method.request.header.X-B3-SpanId",
+            "integration.request.header.X-B3-TraceId": "method.request.header.X-B3-TraceId",
+            "integration.request.header.X-Correlation-Id": "method.request.header.X-Correlation-Id",
+            "integration.request.header.X-Forwarded-For": "method.request.header.X-Forwarded-For",
+            "integration.request.header.token": "method.request.header.token"
+          },
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key,Authorization'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key,Authorization'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key,Authorization'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key,Authorization'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key,Authorization'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key,Authorization'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key,Authorization'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/ctarequired",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key,Authorization'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/decisioninitialtransaction": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns the cta required response",
+        "operationId": "decisionInitialTransactionUsingPOST",
+        "parameters": [{
+          "name": "X-B3-ParentSpanId",
+          "in": "header",
+          "description": "X-B3-ParentSpanId",
+          "required": false,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+          {
+            "name": "X-B3-SpanId",
+            "in": "header",
+            "description": "X-B3-SpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-TraceId",
+            "in": "header",
+            "description": "X-B3-TraceId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Forwarded-For",
+            "in": "header",
+            "description": "X-Forwarded-For",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecisionInitialTransactionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the cta required response for that application",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionInitialTransactionResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "requestParameters": {
+            "integration.request.header.X-B3-ParentSpanId": "method.request.header.X-B3-ParentSpanId",
+            "integration.request.header.X-B3-SpanId": "method.request.header.X-B3-SpanId",
+            "integration.request.header.X-B3-TraceId": "method.request.header.X-B3-TraceId",
+            "integration.request.header.X-Correlation-Id": "method.request.header.X-Correlation-Id",
+            "integration.request.header.X-Forwarded-For": "method.request.header.X-Forwarded-For",
+            "integration.request.header.token": "method.request.header.token"
+          },
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/decisioninitialtransaction",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/linkaction/{encryptedValue}": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns the Activation Link result",
+        "operationId": "activationLinkActionUsingPOST",
+        "parameters": [{
+          "name": "X-B3-ParentSpanId",
+          "in": "header",
+          "description": "X-B3-ParentSpanId",
+          "required": false,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+          {
+            "name": "X-B3-SpanId",
+            "in": "header",
+            "description": "X-B3-SpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-TraceId",
+            "in": "header",
+            "description": "X-B3-TraceId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Forwarded-For",
+            "in": "header",
+            "description": "X-Forwarded-For",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "encryptedValue",
+            "in": "path",
+            "description": "encryptedValue",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the Activation Link result",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebActivationLinkClickResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "requestParameters": {
+            "integration.request.header.X-B3-ParentSpanId": "method.request.header.X-B3-ParentSpanId",
+            "integration.request.header.X-B3-SpanId": "method.request.header.X-B3-SpanId",
+            "integration.request.header.X-B3-TraceId": "method.request.header.X-B3-TraceId",
+            "integration.request.header.X-Correlation-Id": "method.request.header.X-Correlation-Id",
+            "integration.request.header.X-Forwarded-For": "method.request.header.X-Forwarded-For",
+            "integration.request.path.encryptedValue": "method.request.path.encryptedValue"
+          },
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/linkaction/{encryptedValue}",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/loanagreementdetails": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Returns the Loan Agreement details",
+        "operationId": "getLoanAgreementDetailsUsingPOST",
+        "parameters": [{
+          "name": "X-B3-ParentSpanId",
+          "in": "header",
+          "description": "X-B3-ParentSpanId",
+          "required": false,
+          "style": "simple",
+          "explode": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+          {
+            "name": "X-B3-SpanId",
+            "in": "header",
+            "description": "X-B3-SpanId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-B3-TraceId",
+            "in": "header",
+            "description": "X-B3-TraceId",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Forwarded-For",
+            "in": "header",
+            "description": "X-Forwarded-For",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "loanDetailsRequest",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebLoanDetailsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the Activation result",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebLoanDetailsResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "requestParameters": {
+            "integration.request.header.X-B3-ParentSpanId": "method.request.header.X-B3-ParentSpanId",
+            "integration.request.header.X-B3-SpanId": "method.request.header.X-B3-SpanId",
+            "integration.request.header.X-B3-TraceId": "method.request.header.X-B3-TraceId",
+            "integration.request.header.X-Correlation-Id": "method.request.header.X-Correlation-Id",
+            "integration.request.header.X-Forwarded-For": "method.request.header.X-Forwarded-For",
+            "integration.request.header.token": "method.request.header.token"
+          },
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/loanagreementdetails",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activation/link": {
+      "post": {
+        "tags": [
+          "activation-controller"
+        ],
+        "summary": "Sends activation links",
+        "operationId": "sendActivationLink",
+        "parameters": [
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "description": "X-Correlation-Id",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gs-platform",
+            "in": "header",
+            "description": "GreenSky client platforms, example of values: mssp or mobile",
+            "required": false,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "sendActivationLinkRequest",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendActivationLinkRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http_proxy",
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/activation/link",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'gs-platform,Content-Type, Accept, X-Requested-With, Authorization, Access-Control-Allow-Headers, Origin, Access-Control-Request-Method, Access-Control-Request-Headers, X-Session-Id'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/activation": {
+      "post": {
+        "tags": [
+          "agent-activation-controller"
+        ],
+        "summary": "Protected API for agent activation",
+        "operationId": "postAgentAccountActivation",
+        "parameters": [
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "activationRequest",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebActivationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the Activation result",
+            "headers": {
+              "X-Correlation-Id": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebActivationResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http_proxy",
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/admin/activation",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/activation/pla": {
+      "post": {
+        "tags": [
+          "agent-activation-controller"
+        ],
+        "summary": "Protected API for pla decision",
+        "operationId": "postPlaDecision",
+        "parameters": [
+          {
+            "name": "X-Correlation-Id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "PLA decision request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlaDecisionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the PLA decision processing result",
+            "headers": {
+              "X-Correlation-Id": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebActivationResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http_proxy",
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/admin/activation/pla",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/health": {
+      "get": {
+        "tags": [
+          "operation-handler"
+        ],
+        "summary": "handle",
+        "operationId": "handleUsingGET",
+        "requestBody": {
+          "description": "body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/actuator/health",
+          "httpMethod": "GET"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/loggers": {
+      "get": {
+        "tags": [
+          "operation-handler"
+        ],
+        "summary": "handle",
+        "operationId": "handleUsingGET_2",
+        "requestBody": {
+          "description": "body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/actuator/loggers",
+          "httpMethod": "GET"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actuator/loggers/{name}": {
+      "get": {
+        "tags": [
+          "operation-handler"
+        ],
+        "summary": "handle",
+        "operationId": "handleUsingGET_1",
+        "requestBody": {
+          "description": "body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/vnd.spring-boot.actuator.v3+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.spring-boot.actuator.v2+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/actuator/loggers/{name}",
+          "httpMethod": "GET"
+        }
+      },
+      "post": {
+        "tags": [
+          "operation-handler"
+        ],
+        "summary": "handle",
+        "operationId": "handleUsingPOST",
+        "requestBody": {
+          "description": "body",
+          "content": {
+            "application/vnd.spring-boot.actuator.v3+json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "application/vnd.spring-boot.actuator.v2+json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false,
+        "x-amazon-apigateway-integration": {
+          "timeoutInMillis": "<apigwTimeout>",
+          "connectionId": "${stageVariables.vpcLinkId}",
+          "connectionType": "VPC_LINK",
+          "passthroughBehavior": "when_no_match",
+          "type": "http",
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "401": {
+              "statusCode": "401",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "403": {
+              "statusCode": "403",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "404": {
+              "statusCode": "404",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.host}:${stageVariables.nlbport}/actuator/loggers/{name}",
+          "httpMethod": "POST"
+        }
+      },
+      "options": {
+        "tags": [
+          "CORS"
+        ],
+        "summary": "CORS support",
+        "description": "Enable CORS by returning correct headers\n",
+        "responses": {
+          "200": {
+            "description": "Default response for CORS method",
+            "headers": {
+              "Access-Control-Allow-Headers": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Methods": {
+                "style": "simple",
+                "explode": false
+              },
+              "Access-Control-Allow-Origin": {
+                "style": "simple",
+                "explode": false
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "mock",
+          "timeoutInMillis": "<apigwTimeout>",
+          "requestTemplates": {
+            "application/json": "{\n  \"statusCode\" : 200\n}\n"
+          },
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,token,platform,cache-control,X-Correlation-Id,X-B3-TraceId,X-B3-SpanId,X-B3-ParentSpanId,X-B3-Sampled,X-Api-Key'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              },
+              "responseTemplates": {
+                "application/json": "{}\n"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthLoanAmtActionResponse": {
+        "title" : "AuthLoanAmtActionResponse",
+        "type" : "object",
+        "properties" : {
+          "activationChannel" : {
+            "type" : "string"
+          },
+          "applicationId" : {
+            "type" : "string"
+          },
+          "cctrId" : {
+            "type" : "string"
+          },
+          "error" : {
+            "$ref" : "#/components/schemas/ErrorResponse"
+          },
+          "jobComplete" : {
+            "type" : "boolean"
+          },
+          "merchantName" : {
+            "type" : "string"
+          },
+          "newAuthAmount" : {
+            "type" : "string"
+          },
+          "originalAuthAmount" : {
+            "type" : "string"
+          },
+          "questionsResponse" : {
+            "$ref" : "#/components/schemas/WebQuestionsResponse"
+          },
+          "roundTripIdentifier" : {
+            "type" : "string"
+          },
+          "springsteenIndicator" : {
+            "type" : "string"
+          },
+          "targetPage" : {
+            "type" : "string"
+          },
+          "token" : {
+            "type" : "string"
+          },
+          "transactionId" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AuthLoanSubmitRequest": {
+        "title" : "AuthLoanSubmitRequest",
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string"
+          },
+          "approved" : {
+            "type" : "boolean"
+          },
+          "cctrId" : {
+            "type" : "string"
+          },
+          "newAuthAmount" : {
+            "type" : "string"
+          },
+          "originalAuthAmount" : {
+            "type" : "string"
+          },
+          "activationChannel" : {
+            "type" : "string"
+          },
+          "declineReason" : {
+            "type" : "string"
+          },
+          "additionalInfo" : {
+            "type" : "string"
+          }
+        }
+      },
+      "PlaStatusResponse": {
+        "title" : "PlaStatusResponse",
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CaptureDeclineReasonsResponse": {
+        "title" : "CaptureDeclineReasonsResponse",
+        "type" : "object",
+        "properties" : {
+          "targetPage" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CaptureDeclineReasonRequest": {
+        "title" : "CaptureDeclineReasonRequest",
+        "type" : "object",
+        "properties" : {
+          "activationChanel" : {
+            "type" : "string"
+          },
+          "applicationId" : {
+            "type" : "string"
+          },
+          "declineReason" : {
+            "type" : "string"
+          },
+          "additionalInfo" : {
+            "type" : "string"
+          },
+          "appIndicator" : {
+            "type" : "string"
+          },
+          "cctrId" : {
+            "type" : "string"
+          },
+          "chargeAmount" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          },
+          "approved" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "AuthLoanSubmitResponse": {
+        "title": "AuthLoanSubmitResponse",
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponse"
+          },
+          "roundTripIdentifier": {
+            "type": "string"
+          },
+          "springsteenIndicator": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "targetPage": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateAccountRequest": {
+        "title": "CreateAccountRequest",
+        "type": "object",
+        "properties": {
+          "activationChannel": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string"
+          },
+          "authorizedLoanAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "initialTxnDetails": {
+            "$ref": "#/components/schemas/TransactionDetailRequest"
+          },
+          "offerId": {
+            "type": "string"
+          },
+          "product": {
+            "type": "string"
+          },
+          "program": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateAccountResponse": {
+        "title": "CreateAccountResponse",
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponse"
+          },
+          "roundTripIdentifier": {
+            "type": "string"
+          },
+          "springsteenIndicator": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "CtaRequiredRequest": {
+        "title": "CtaRequiredRequest",
+        "type": "object",
+        "properties": {
+          "activationChannel": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string"
+          },
+          "inStore": {
+            "type": "boolean"
+          },
+          "last4SSN": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "program": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "CtaRequiredResponse": {
+        "title": "CtaRequiredResponse",
+        "type": "object",
+        "properties": {
+          "ctafailed": {
+            "type": "boolean"
+          },
+          "ctarequired": {
+            "type": "boolean"
+          },
+          "eSignatureComplete": {
+            "type": "string"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponse"
+          },
+          "isThdActivated": {
+            "type": "boolean"
+          },
+          "loanAgreement": {
+            "type": "boolean"
+          },
+          "qualifyingEvent": {
+            "type": "boolean"
+          },
+          "roundTripIdentifier": {
+            "type": "string"
+          },
+          "springsteenIndicator": {
+            "type": "string"
+          },
+          "targetPage": {
+            "type": "string"
+          },
+          "textActivationAffected": {
+            "type": "boolean"
+          },
+          "textActivationCompleted": {
+            "type": "boolean"
+          },
+          "token": {
+            "type": "string"
+          },
+          "proposedOfferAvailable": {
+            "type": "boolean"
+          },
+          "treatment": {
+            "$ref": "#/components/schemas/Treatment"
+          }
+        }
+      },
+      "DecisionInitialTransactionRequest": {
+        "title": "DecisionInitialTransactionRequest",
+        "type": "object",
+        "properties": {
+          "acceptedTransaction": {
+            "type": "boolean"
+          },
+          "activationChannel": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string"
+          },
+          "authorizedLoanAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "chargeAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "date": {
+            "type": "string",
+            "example": "MM/dd/yyyy"
+          },
+          "last4SSN": {
+            "type": "string"
+          },
+          "program": {
+            "type": "string"
+          }
+        }
+      },
+      "DecisionInitialTransactionResponse": {
+        "title": "DecisionInitialTransactionResponse",
+        "type": "object",
+        "properties": {
+          "activationChannel": {
+            "type": "string"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponse"
+          },
+          "roundTripIdentifier": {
+            "type": "string"
+          },
+          "springsteenIndicator": {
+            "type": "string"
+          },
+          "targetPage": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "title": "ErrorResponse",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Person": {
+        "title": "Person",
+        "type": "object",
+        "properties": {
+          "activationStatus": {
+            "type": "string"
+          },
+          "applicableChannels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "resultant": {
+            "type": "string"
+          }
+        }
+      },
+      "TransactionDetailRequest": {
+        "title": "TransactionDetailRequest",
+        "type": "object",
+        "properties": {
+          "chargeAmount": {
+            "type": "string"
+          },
+          "chargeType": {
+            "type": "string"
+          },
+          "estimatedJobCompletionDate": {
+            "type": "string",
+            "example": "MM/dd/yyyy"
+          },
+          "finalTransaction": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Treatment": {
+        "title": "Treatment",
+        "type": "object",
+        "properties": {
+          "applicant": {
+            "$ref": "#/components/schemas/Person"
+          },
+          "coApplicant": {
+            "$ref": "#/components/schemas/Person"
+          }
+        }
+      },
+      "WebActivationLinkClickResponse": {
+        "title": "WebActivationLinkClickResponse",
+        "type": "object",
+        "properties": {
+          "activationChannel": {
+            "type": "string"
+          },
+          "appIndicator": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponse"
+          },
+          "questionsResponse": {
+            "$ref": "#/components/schemas/WebQuestionsResponse"
+          },
+          "roundTripIdentifier": {
+            "type": "string"
+          },
+          "springsteenIndicator": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "targetPage": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          },
+          "transactionId": {
+            "type": "string"
+          }
+        }
+      },
+      "WebActivationRequest": {
+        "title": "WebActivationRequest",
+        "type": "object",
+        "properties": {
+          "activationChannel": {
+            "type": "string"
+          },
+          "appIndicator": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string"
+          },
+          "last4SSN": {
+            "type": "string"
+          },
+          "program": {
+            "type": "string"
+          },
+          "plaDecision": {
+            "type": "string"
+          }
+        }
+      },
+      "WebActivationResponse": {
+        "title": "WebActivationResponse",
+        "type": "object",
+        "properties": {
+          "activationChannel": {
+            "type": "string"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponse"
+          },
+          "initialTxnDetails": {
+            "$ref": "#/components/schemas/WebInitialTransactionDetails"
+          },
+          "roundTripIdentifier": {
+            "type": "string"
+          },
+          "springsteenIndicator": {
+            "type": "string"
+          },
+          "targetPage": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "WebInitialTransactionDetails": {
+        "title": "WebInitialTransactionDetails",
+        "type": "object",
+        "properties": {
+          "authorizedLoanAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "initialChargeAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "requestDate": {
+            "type": "string"
+          }
+        }
+      },
+      "WebLoanDetailsRequest": {
+        "title": "WebLoanDetailsRequest",
+        "type": "object",
+        "properties": {
+          "activationChannel": {
+            "type": "string"
+          },
+          "applicationId": {
+            "type": "string"
+          },
+          "last4SSN": {
+            "type": "string"
+          },
+          "program": {
+            "type": "string"
+          }
+        }
+      },
+      "WebLoanDetailsResponse": {
+        "title": "WebLoanDetailsResponse",
+        "type": "object",
+        "properties": {
+          "activationChannel": {
+            "type": "string"
+          },
+          "authorizedLoanAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponse"
+          },
+          "roundTripIdentifier": {
+            "type": "string"
+          },
+          "springsteenIndicator": {
+            "type": "string"
+          },
+          "targetPage": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "WebQuestion": {
+        "title": "WebQuestion",
+        "type": "object",
+        "properties": {
+          "choice": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebQuestionChoice"
+            }
+          },
+          "questionId": {
+            "type": "string"
+          },
+          "sequenceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "WebQuestionChoice": {
+        "title": "WebQuestionChoice",
+        "type": "object",
+        "properties": {
+          "choiceId": {
+            "type": "string"
+          },
+          "sequenceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "WebQuestionsResponse": {
+        "title": "WebQuestionsResponse",
+        "type": "object",
+        "properties": {
+          "quiz": {
+            "$ref": "#/components/schemas/WebQuiz"
+          }
+        }
+      },
+      "WebQuiz": {
+        "title": "WebQuiz",
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebQuestion"
+            }
+          },
+          "quizId": {
+            "type": "string"
+          }
+        }
+      },
+      "SendActivationLinkRequest": {
+        "title": "SendActivationLinkRequest",
+        "type": "object",
+        "properties": {
+          "applicationId": {
+            "type": "string"
+          },
+          "applicantEmail": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          }
+        }
+      },
+      "PlaDecisionRequest": {
+        "title": "PlaDecisionRequest",
+        "type": "object",
+        "properties": {
+          "appIndicator": {
+            "type": "string",
+            "enum": [
+              "APPLICANT",
+              "CO_APPLICANT"
+            ]
+          },
+          "applicationId": {
+            "type": "string"
+          },
+          "program": {
+            "type": "string"
+          },
+          "plaDecision": {
+            "type": "string",
+            "enum": [
+              "ACCEPT",
+              "REJECT"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
