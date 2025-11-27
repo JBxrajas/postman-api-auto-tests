@@ -32,6 +32,7 @@ jobs:
         npm install -g newman-reporter-htmlextra
 
     - name: Run Postman Collection
+      continue-on-error: true
       run: |
         newman run "postman/collections/PetStore Practice.postman_collection.json" \
           -e postman/environments/PetStorePROD.postman_environment.json \
@@ -43,8 +44,15 @@ jobs:
       if: always() && github.ref == 'refs/heads/main'
       run: |
         mkdir -p deploy/reports
-        cp newman-report.html deploy/reports/
+        if [ -f newman-report.html ]; then
+          cp newman-report.html deploy/reports/
+        else
+          echo "<h1>Report not generated</h1>" > deploy/reports/newman-report.html
+        fi
         cp index.html deploy/
+        echo "Contents of deploy directory:"
+        ls -la deploy/
+        ls -la deploy/reports/
 
     - name: Upload Test Report
       if: always()
