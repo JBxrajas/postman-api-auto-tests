@@ -5,10 +5,16 @@ on:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
-  workflow_dispatch:  # Allows manual trigger from GitHub UI
+  workflow_dispatch:
+
+# Sets permissions for the GITHUB_TOKEN
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  test:
+  test-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -27,7 +33,7 @@ jobs:
 
     - name: Run Postman Collection
       run: |
-        newman run postman/collections/PetStore\ Practice.postman_collection.json \
+        newman run "postman/collections/PetStore Practice.postman_collection.json" \
           -e postman/environments/PetStorePROD.postman_environment.json \
           -g postman/globals/workspace.postman_globals.json \
           --reporters cli,htmlextra \
